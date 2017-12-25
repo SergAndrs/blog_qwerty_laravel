@@ -4,12 +4,10 @@
 
 @section('content')
 
-    @if($flash = session('message'))
-
+    @if ($flash = session('message'))
         <div id="flash-message" class="alert alert-success" role="alert">
             {{ $flash }}
         </div>
-
     @endif
 
     <div class="row row-offcanvas row-offcanvas-right">
@@ -21,22 +19,20 @@
 
             <hr>
 
-            @foreach($posts as $post)
+            @foreach ($posts as $post)
+                <div class="row">
+                    <div class="col-6 col-lg-8">
+                        <h2>{{ $post->name }}</h2>
+                        <p>{{ mb_substr(strip_tags($post->body), 0 ,250) }}{{ mb_strlen(strip_tags($post->body)) > 50 ? '...' : '' }}</p>
+                        <p><a class="btn btn-primary" href="/posts/{{ $post->id }}" role="button">More &raquo;</a></p>
+                    </div>
 
-            <div class="row">
-                <div class="col-6 col-lg-8">
-                    <h2>{{ $post->name }}</h2>
-                    <p>{{ substr(strip_tags($post->body), 0 ,250) }}{{ strlen(strip_tags($post->body)) > 50 ? '...' : '' }}</p>
-                    <p><a class="btn btn-primary" href="/posts/{{ $post->id }}" role="button">More &raquo;</a> <a class="btn btn-secondary" href="/posts/{{ $post->id }}/edit" role="button">Edit &raquo;</a></p>
-                </div>
+                    <div class="col-6 col-lg-4">
+                        <img src="{{ asset('images/' . $post->image) }}" class="rounded float-right" alt="..." width="140" height="140">
+                    </div><!--/span-->
+                </div><!--/row-->
 
-                <div class="col-6 col-lg-4">
-                    <img src="{{ asset('images/' . $post->image) }}" class="rounded float-right" alt="..." width="140" height="140">
-                </div><!--/span-->
-            </div><!--/row-->
-
-            <hr>
-
+                <hr>
             @endforeach
 
         </div><!--/span-->

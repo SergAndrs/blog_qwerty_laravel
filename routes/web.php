@@ -19,3 +19,16 @@ Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/posts/{post}/edit', 'PostsController@edit');
 Route::post('/posts/update/{post}', 'PostsController@update');
 Route::post('/posts/destroy/{post}', 'PostsController@destroy');
+
+/* 'Likes' routes */
+Route::post('/posts/{post}/like', 'LikesController@store');
+Route::post('/posts/{post}/unlike', 'LikesController@destroy');
+
+/* Registrations routes */
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+
+/* 'Log in', 'Log out' routes */
+Route::get('/login', 'SessionsController@create')->name('login');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');

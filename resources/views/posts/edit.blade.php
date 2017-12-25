@@ -13,7 +13,6 @@
     </script>
 
 @section('content')
-
     @include('layouts.errors')
 
     <div class="row">
@@ -21,11 +20,6 @@
             <form method="POST" action="/posts/update/{{ $post->id }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
-
-                <div class="form-group">
-                    <label for="author">Author:</label>
-                    <input type="text" name="author" id="author" class="form-control" value="{{ $post->author }}" required>
-                </div>
 
                 <div class="form-group">
                     <label for="name">Title:</label>

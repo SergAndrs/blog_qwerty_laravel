@@ -6,12 +6,34 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ Request::is('/') ? 'active' : ''}}">
-                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item {{ Request::is('/posts/create') ? 'active' : ''}}">
-                <a class="nav-link" href="/posts/create/">Create Post</a>
-            </li>
+
+            @if (auth()->check())
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts/create/">Create Post</a>
+                </li>
+            @endif
+
         </ul>
+
+        <ul class="navbar-nav ml-auto">
+
+            @if (auth()->check())
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">{{ auth()->user()->name }}</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Registration</a>
+                </li>
+            @endif
+
+        </ul>
+
     </div>
 </nav>

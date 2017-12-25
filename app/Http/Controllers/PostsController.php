@@ -11,6 +11,17 @@ use Mews\Purifier\Facades\Purifier;
 class PostsController extends Controller
 {
     /**
+     * Don't allow guests see all except
+     * 'index', 'show' methods.
+     *
+     * PostsController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -40,7 +51,6 @@ class PostsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'author' => 'required',
             'name' => 'required',
             'body' => 'required',
             'image' => 'required'
@@ -48,8 +58,9 @@ class PostsController extends Controller
 
         $post = new Post;
 
-        $post->author = request('author');
+        $post->user_id = auth()->id();
         $post->name = request('name');
+
         /* Security for WYSIWYG Editor */
         $post->body = Purifier::clean(request('body'));
 
@@ -105,12 +116,10 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         $this->validate(request(), [
-            'author' => 'required',
             'name' => 'required',
             'body' => 'required'
         ]);
 
-        $post->author = request('author');
         $post->name = request('name');
 
         /* Security for WYSIWYG Editor */
@@ -143,10 +152,14 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         session()->flash('message', 'Post have been deleted');
 
         return redirect('/');
     }
+
+
 }
