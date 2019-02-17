@@ -9,7 +9,7 @@
         <div class="col-sm-8">
             <h1>Sign In</h1>
 
-            <form method="POST" action="/login">
+            <form method="POST" action="{{ route('login.store') }}">
 
                 {{ csrf_field() }}
 

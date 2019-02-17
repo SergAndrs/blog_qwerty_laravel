@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-            <form method="POST" action="/posts/update/{{ $post->id }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
 
@@ -33,7 +33,7 @@
 
                 <div class="from-group">
                     <label for="image">
-                        Image: <img src="{{ asset('images/' . $post->image) }}" class="rounded" alt="..." width="140" height="140">
+                        Image: <img src="{{ /*secure_*/asset('images/' . $post->image) }}" class="rounded" alt="..." width="140" height="140">
                     </label>
                     <input type="file" name="image" id="image" class="form-control">
                 </div>

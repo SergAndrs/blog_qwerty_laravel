@@ -1,5 +1,5 @@
 <footer>
     <hr>
 
-    <p class="text-center">&copy; QWERTY.SOFTWARE 2017</p>
+    <p class="text-center">&copy; Blog Heroku 2017 - {{ \Carbon\Carbon::now()->year }}</p>
 </footer>

@@ -13,22 +13,22 @@
 
 /* Post routes */
 Route::get('/', 'PostsController@index');
-Route::get('/posts/create', 'PostsController@create');
-Route::post('/posts', 'PostsController@store');
-Route::get('/posts/{post}', 'PostsController@show');
-Route::get('/posts/{post}/edit', 'PostsController@edit');
-Route::post('/posts/update/{post}', 'PostsController@update');
-Route::post('/posts/destroy/{post}', 'PostsController@destroy');
+Route::get('/posts/create', 'PostsController@create')->name('posts.create');
+Route::post('/posts', 'PostsController@store')->name('posts.store');
+Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
+Route::get('/posts/{post}/edit', 'PostsController@edit')->name('posts.edit');
+Route::post('/posts/{post}', 'PostsController@update')->name('posts.update');
+Route::post('/posts/{post}', 'PostsController@destroy')->name('posts.destroy');
 
 /* 'Likes' routes */
 Route::post('/posts/{post}/like', 'LikesController@store');
 Route::post('/posts/{post}/unlike', 'LikesController@destroy');
 
 /* Registrations routes */
-Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');
+Route::get('/register', 'RegistrationController@create')->name('register.create');
+Route::post('/register', 'RegistrationController@store')->name('register.store');
 
 /* 'Log in', 'Log out' routes */
-Route::get('/login', 'SessionsController@create')->name('login');
-Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy');
+Route::get('/login', 'SessionsController@create')->name('login.create');
+Route::post('/login', 'SessionsController@store')->name('login.store');
+Route::get('/logout', 'SessionsController@destroy')->name('login.destroy');

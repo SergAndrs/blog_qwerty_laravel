@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-            <form method="POST" action="/posts" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
 

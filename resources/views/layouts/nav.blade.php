@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    {{--<a class="navbar-brand" href="/">Home</a>--}}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +12,7 @@
 
             @if (auth()->check())
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts/create/">Create Post</a>
+                    <a class="nav-link" href="{{ route('posts.create') }}">Create Post</a>
                 </li>
             @endif
 
@@ -22,14 +22,14 @@
 
             @if (auth()->check())
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">{{ auth()->user()->name }}</a>
+                    <a class="nav-link" href="{{ route('login.destroy') }}">{{ auth()->user()->name }}</a>
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Log In</a>
+                    <a class="nav-link" href="{{ route('login.create') }}">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Registration</a>
+                    <a class="nav-link" href="{{ route('register.create') }}">Registration</a>
                 </li>
             @endif
 

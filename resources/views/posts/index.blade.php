@@ -24,11 +24,11 @@
                     <div class="col-6 col-lg-8">
                         <h2>{{ $post->name }}</h2>
                         <p>{{ mb_substr(strip_tags($post->body), 0 ,250) }}{{ mb_strlen(strip_tags($post->body)) > 50 ? '...' : '' }}</p>
-                        <p><a class="btn btn-primary" href="/posts/{{ $post->id }}" role="button">More &raquo;</a></p>
+                        <p><a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}" role="button">More &raquo;</a></p>
                     </div>
 
                     <div class="col-6 col-lg-4">
-                        <img src="{{ asset('images/' . $post->image) }}" class="rounded float-right" alt="..." width="140" height="140">
+                        <img src="{{ /*secure_*/asset('images/' . $post->image) }}" class="rounded float-right" alt="..." width="140" height="140">
                     </div><!--/span-->
                 </div><!--/row-->
 

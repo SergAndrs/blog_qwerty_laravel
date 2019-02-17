@@ -17,12 +17,12 @@
                 @can('update', $post)
                     <div class="row">
                         <div class="col-sm-6">
-                            <a class="btn btn-primary btn-block" href="/posts/{{ $post->id }}/edit" role="button">Edit &raquo;</a>
+                            <a class="btn btn-primary btn-block" href="{{ route('posts.edit', $post->id) }}" role="button">Edit &raquo;</a>
                         </div>
 
                     @can('delete', $post)
                         <div class="col-sm-6">
-                            <form method="POST" action="/posts/destroy/{{ $post->id }}">
+                            <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
 
                                 {{ csrf_field() }}
 
@@ -41,7 +41,7 @@
 
                             @if ($post->isFirstLiked())
                                 <div class="col-sm-6">
-                                    <a class="btn btn-primary btn-block" href="/posts/{{ $post->id }}/edit" role="button">Edit &raquo;</a>
+                                    <a class="btn btn-primary btn-block" href="{{ route('posts.edit', $post->id) }}" role="button">Edit &raquo;</a>
                                 </div>
                             @endif
 
@@ -69,7 +69,7 @@
         </div>
 
         <div class="col-lg-4">
-            <img src="{{ asset('images/' . $post->image) }}" class="rounded float-right" alt="..." width="340" height="340">
+            <img src="{{ /*secure_*/asset('images/' . $post->image) }}" class="rounded float-right" alt="..." width="340" height="340">
         </div><!--/span-->
     </div><!--/row-->
 
