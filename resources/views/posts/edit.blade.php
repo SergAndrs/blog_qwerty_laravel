@@ -20,6 +20,7 @@
             <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
 
                 <div class="form-group">
                     <label for="name">Title:</label>
